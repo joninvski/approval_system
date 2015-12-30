@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}My amazing blog{% endblock %}
+
+{% block content %}
+
+<h1>Order: {{ object.number }}</h1>
+<p>Vendor: {{ object.vendor }}</p>
+<p>Payment method: {{ object.payment_method }}</p>
+<p>Workflow Template: {{ object.workflow_template }}</p>
+<p>Time: {{ object.time }}</p>
+
+<h2> Items</h2>
+<table>
+
+<tr>
+    <th>Quantity</th>
+    <th>Description</th>
+    <th>Unit Price</th>
+</tr>
+{% for item in object.items.all %}
+<tr>
+    <td>{{ item.quantity }}</td>
+    <td>{{ item.description }}</td>
+    <td>{{ item.unit_price}} </td>
+</tr>
+{% endfor %}
+</table>
+
+<h2> Necessary Approvals </h2>
+<table>
+
+<tr>
+    <th>Approver</th>
+    <th>Level</th>
+</tr>
+    {% for approval_priority in object.workflow_template.approval_list.all %}
+<tr>
+    <td>{{ approval_priority.user }} </td>
+    <td>{{ approval_priority.priority }}</td>
+</tr>
+    {% endfor %}
+</table>
+
+<h2> Gathered Approvals </h2>
+<table>
+
+<tr>
+    <th>Time</th>
+    <th>Approver</th>
+    <th>Status</th>
+</tr>
+    {% for approval in object.approvals.all %}
+    <tr>
+        <td>{{ approval.time }}</td>
+        <td>{{ approval.user }}</td>
+        <td>{{ approval.approved }} </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

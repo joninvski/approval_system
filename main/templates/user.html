@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}My amazing blog{% endblock %}
+
+{% block content %}
+
+<h1>Dashboard for {{ object }}</h1>
+
+<h2>Open</h2>
+
+{{ open_orders }}
+
+<h2>Closed</h2>
+
+{{ closed_orders }}
+
+{% endblock %}
