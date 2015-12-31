@@ -25,6 +25,9 @@ class Item(models.Model):
     def __str__(self):
         return "%d - %s %s" % (self.quantity, self.description, self.unit_price)
 
+    def total_price(self):
+        return self.quantity * self.unit_price
+
 class PaymentMethod(models.Model):
     description = models.CharField(max_length=200)
 
@@ -61,6 +64,14 @@ class Approval(models.Model):
     def __str__(self):
         return str(self.user) + " " + str(self.approved)
 
+    def is_approved(self):
+        if self.approved == u'n':
+            return 'rejected'
+        if self.approved == u'-':
+            return 'pending'
+        if self.approved == u'y':
+            return 'approved'
+
 class ApprovalPriority(models.Model):
     user = models.ForeignKey(Approver)
     priority = models.IntegerField(default=0)
@@ -89,3 +100,15 @@ class Order(models.Model):
 
     def __str__(self):
         return str(self.number) + " " + str(self.vendor)
+
+    def my_approval(self, user):
+        for approval in self.approvals.all():
+            if approval.user.user == user:
+                return approval
+
+    def total_price(self):
+        price = 0
+
+        for item in self.items.all():
+            price += item.total_price()
+        return price

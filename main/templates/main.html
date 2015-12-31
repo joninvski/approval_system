@@ -13,6 +13,7 @@
         <th> Number </th>
         <th> Vendor </th>
         <th> Business purpose </th>
+        <th> Total price </th>
         <th> Closed </th>
         <th> Link </th>
     </tr>
@@ -21,6 +22,7 @@
         <td> {{ order.number }} </td>
         <td> {{ order.vendor }} </td>
         <td> {{ order.business_purpose }} </td>
+        <td> {{ order.total_price }} $ </td>
         <td> {{ order.closed}} </td>
         <td> <a href="{% url 'order' order.id %}">link</a></td>
     </tr>
@@ -33,6 +35,7 @@
         <th> Number </th>
         <th> Vendor </th>
         <th> Business purpose </th>
+        <th> Total price </th>
         <th> Closed </th>
         <th> Link </th>
     </tr>
@@ -42,6 +45,7 @@
         <td> {{ order.number }} </td>
         <td> {{ order.vendor }} </td>
         <td> {{ order.business_purpose }} </td>
+        <td> {{ order.total_price }} $ </td>
         <td> {{ order.closed}} </td>
         <td> <a href="{% url 'order' order.id %}">link</a></td>
     </tr>

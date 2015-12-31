@@ -137,8 +137,15 @@ workflow_template_b.save()
 workflow_template_b.approval_list = [priority_milena, priority_tiago, priority_sofia]
 workflow_template_b.save()
 
+def create_approval(user):
+    approval = Approval()
+    approval.user = user
+    approval.time = datetime.now()
+    approval.save()
+    return approval
+
 order_a = Order()
-order_a.number = 1
+order_a.number = "2015-1"
 order_a.time = datetime.now()
 order_a.payment_method = payment_method_c 
 order_a.requester = requester_magda 
@@ -147,11 +154,11 @@ order_a.workflow_template = workflow_template_a
 order_a.business_purpose = "We need it for the new staff"
 order_a.save()
 order_a.items = [item_a, item_b]
-# order_a.approvals = [priority_sofia, priority_tiago, priority_milena]
+order_a.approvals = [create_approval(approver_sofia), create_approval(approver_tiago), create_approval(approver_ben)]
 order_a.save()
 
 order_b = Order()
-order_b.number = 2
+order_b.number = "2015-2"
 order_b.time = datetime.now() - timedelta(1, 1500)
 order_b.payment_method = payment_method_c 
 order_b.requester = requester_magda 
@@ -160,11 +167,11 @@ order_b.workflow_template = workflow_template_a
 order_b.business_purpose = "These monitors are pretty"
 order_b.save()
 order_b.items = [item_c]
-# order_b.approvals = [priority_sofia, priority_tiago, priority_milena]
+order_b.approvals = [create_approval(approver_sofia), create_approval(approver_tiago), create_approval(approver_ben)]
 order_b.save()
 
 order_c = Order()
-order_c.number = 3
+order_c.number = "2015-3"
 order_c.time = datetime.now() - timedelta(1, 1500)
 order_c.payment_method = payment_method_c 
 order_c.requester = requester_magda 
@@ -174,5 +181,5 @@ order_c.business_purpose = "We need new chairs"
 order_c.closed = True
 order_c.save()
 order_c.items = [item_c]
-# order_c.approvals = [priority_sofia, priority_tiago, priority_milena]
+order_c.approvals = [create_approval(approver_sofia), create_approval(approver_tiago), create_approval(approver_ben)]
 order_c.save()

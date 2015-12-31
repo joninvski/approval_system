@@ -23,6 +23,8 @@ from django.views.generic import RedirectView
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^main/', include('main.urls')),
+    url(r'^$', RedirectView.as_view(url='/main')),
+    url(r'^approval_decision/', include('main.urls')),
     url(r'^accounts/login/$', 'django.contrib.auth.views.login', {'template_name': 'admin/login.html'}),
     url(r'^accounts/profile/$', RedirectView.as_view(url='/main'))
 ]
