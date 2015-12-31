@@ -58,12 +58,15 @@
     </tr>
     {% endfor %}
 </table>
-<ul>
 
+<h3>Your decision</h3>
+
+{% if is_approver %}
 <form action="/main/approval_decision/" method="post">
     {% csrf_token %}
     {{ form }}
     <input type="submit" value="Submit" />
 </form>
+{% endif %}
 
 {% endblock %}

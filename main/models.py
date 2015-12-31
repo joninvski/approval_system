@@ -105,6 +105,10 @@ class Order(models.Model):
         for approval in self.approvals.all():
             if approval.user.user == user:
                 return approval
+        return None
+
+    def is_approver(self, user):
+        return self.my_approval(user) != None
 
     def total_price(self):
         price = 0

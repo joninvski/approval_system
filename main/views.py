@@ -54,8 +54,13 @@ class OrderView(generic.DetailView):
         context = super(OrderView, self).get_context_data(**kwargs)
         context['name'] = "name"
         from .forms import MyForm
-        form = MyForm(initial={'order_id': context['object'].id})
+        order = context['object']
+        form = MyForm(initial={'order_id': order.id})
         context['form'] = form
+        user = self.request.user
+
+        context['is_approver'] = order.is_approver(user)
+        
         fill_users(context)
         return context
 

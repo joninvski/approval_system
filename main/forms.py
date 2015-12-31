@@ -14,5 +14,5 @@ MY_CHOICES = (
 )
 
 class MyForm(forms.Form):
-    my_choice_field = forms.ChoiceField(choices=MY_CHOICES)
+    my_choice_field = forms.ChoiceField(choices=MY_CHOICES, label='You decision is')
     order_id = forms.CharField(widget=forms.HiddenInput())
