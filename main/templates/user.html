@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %}My amazing blog{% endblock %}
+{% block title %}Approval system{% endblock %}
 
 {% block content %}
 
 <h1>Dashboard for {{ object }}</h1>
 
-<h2>Requested by me</h2>
+<h2>Requested by {{ object }}</h2>
 
 <h3>Open</h3>
 
@@ -50,7 +50,7 @@
 {% endfor %}
 </table>
 
-<h2>Require my approval</h2>
+<h2>Require {{ object }} approval</h2>
 <h3>Open</h3>
 
 <table>

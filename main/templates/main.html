@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}My amazing blog{% endblock %}
+{% block title %}Approval system{% endblock %}
 
 {% block content %}
 
@@ -45,7 +45,7 @@
         <td> {{ order.number }} </td>
         <td> {{ order.vendor }} </td>
         <td> {{ order.business_purpose }} </td>
-        <td> {{ order.total_price }} $ </td>
+        <td> {{ order.total_price }}$ </td>
         <td> {{ order.closed}} </td>
         <td> <a href="{% url 'order' order.id %}">link</a></td>
     </tr>
